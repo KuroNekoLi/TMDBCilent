@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.tmdbcilent'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.tmdbcilent"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String","API_KEY","\"a04d035fef7364177a43008eadbcd030\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures{
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    // Dagger2 用於依賴注入
+    implementation 'com.google.dagger:dagger:2.46.1'
+    kapt 'com.google.dagger:dagger-compiler:2.46.1'
+
+    // Retrofit2 用於處理網路請求
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Gson Converter 用於將JSON轉換成Java/Kotlin對象
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // OkHttp Logging Interceptor 用於在開發過程中記錄所有網路請求和回應
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
+
+    // Glide用於圖片加載和緩存
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    kapt 'com.github.bumptech.glide:compiler:4.15.1'
+
+    def lifecycle_version = "2.6.1"
+
+    // ViewModel 和 LiveData 用於實現MVVM架構
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    // Compose ViewModel utilities 為Compose提供ViewModel工具
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // Saved state module 用於ViewModel狀態保存
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    // 使用Java 8 API的Lifecycle類別
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    // Room 為SQLite提供抽象層，方便數據庫操作
+    implementation("androidx.room:room-runtime:2.6.0-alpha01")
+    kapt("androidx.room:room-compiler:2.6.0-alpha01")
+    // Kotlin Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.0-alpha01")
+
+    // Kotlin Coroutines 核心庫，為異步操作提供支援
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
+    // 核心KTX庫，提供一些基本功能
+    implementation 'androidx.core:core-ktx:1.10.1'
+    // AppCompat庫，為Android應用提供向下兼容性
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // Material Design庫，提供一些UI元素和樣式
+    implementation 'com.google.android.material:material:1.9.0'
+    // ConstraintLayout，用於構建複雜的UI佈局
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // 測試相關的依賴
+    // Junit 測試框架，用於單元測試
+    testImplementation 'junit:junit:4.13.2'
+
+    // AndroidX Junit 擴展庫，包含許多用於Android測試的有用功能
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+    // Espresso 測試框架，用於撰寫UI測試
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
