@@ -1,4 +1,4 @@
-package com.example.tmdbcilent.data
+package com.example.tmdbcilent.data.model.movie
 
 
 import com.google.gson.annotations.SerializedName
