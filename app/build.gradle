@@ -16,14 +16,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String","Authorization","\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDRkMDM1ZmVmNzM2NDE3N2E0MzAwOGVhZGJjZDAzMCIsInN1YiI6IjY0OGQ5NjZlYzNjODkxMDBhZTUwYjMzMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3fPakINg1cY7vLvnSCX7vzPLt85SCedEUp-oKuN82-A\""
 
-        buildConfigField "String","API_KEY","\"a04d035fef7364177a43008eadbcd030\""
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
     compileOptions {
@@ -35,6 +36,7 @@ android {
     }
     buildFeatures{
         dataBinding true
+        buildConfig true
     }
 }
 
@@ -97,4 +99,5 @@ dependencies {
 
     // Espresso 測試框架，用於撰寫UI測試
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
 }
